@@ -14,6 +14,12 @@ auth.set_access_token(access_token,access_token_secret)
 
 api = tweepy.API(auth)
 
-tweets = api.search_tweets('coupedumonde')
+my_query = '#cdm OR #coupedumonde'
+date_since = "202211200000"
+date_to = "202212200000"
+numTweets = 10
+
+# premium search
+tweets= api.search_full_archive(label='eseo', query=my_query, fromDate=date_since, toDate=date_to, maxResults=numTweets)
 
 print(tweets)
