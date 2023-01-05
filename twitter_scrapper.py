@@ -19,9 +19,9 @@ tweets = []
 # Enter the word or sentence you want to search for
 search ='coupe du monde'
 # Add the periode of time you want to search for
-query = search + ' since:2022-11-20 until:2022-11-21'
+query = search + ' since:2022-11-14 until:2022-11-15'
 # Enter the number of tweets you want to collect
-max_results = 10
+max_results = 500000
 
 # Scraping function for Twitter
 def scrape_search(query):
@@ -33,6 +33,7 @@ scraper = scrape_search(query)
 for i, tweet in enumerate(scraper.get_items()):
     if i > max_results:
         break;
+    print(f'PROGRESSION : {i * 100 / max_results}%')
     tweet_json = json.loads(tweet.json())
 
     tweets.append([tweet_json['date'], tweet.content, tweet.id, tweet.user.username, tweet.user.id, tweet.user.verified,tweet.user.followersCount, tweet.user.friendsCount, tweet.user.favouritesCount,
