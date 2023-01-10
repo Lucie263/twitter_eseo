@@ -17,9 +17,9 @@ start_time = datetime.now()
 
 tweets = []
 # Enter the word or sentence you want to search for
-search ='coupe du monde'
+search ='cdm'
 # Add the periode of time you want to search for
-query = search + ' since:2022-11-14 until:2022-11-15'
+query = search + ' since:2022-11-25 until:2022-11-26'
 # Enter the number of tweets you want to collect
 max_results = 500000
 
