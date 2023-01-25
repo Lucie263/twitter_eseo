@@ -1,17 +1,19 @@
+# import the module
 import tweepy
-import  configparser
 
-config = configparser.ConfigParser()
-config.read('config.ini')
+# assign the values accordingly
+consumer_key = "IrtXzq2QhmcXT2J9AlfMEMoN2"
+consumer_secret = "8HQPL5xNN6cmqH7668vrBegOZA97tnl5CYSGm1RxcVvWJS0V2L"
+access_token = "1605165130660159490-qcX01YaB3DbLfhlcwPDvJGbABCHu60"
+access_token_secret = "SR9ng3Bmcvx4dw5mOaoD7rGNvbzTjLpjQ44E79kvJPBeB"
 
-api_key = config['twitter']['api_key']
-api_key_secret = config['twitter']['api_key_secret']
-access_token = config['twitter']['access_token']
-access_token_secret = config['twitter']['access_token_secret']
+# authorization of consumer key and consumer secret
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 
-auth = tweepy.OAuthHandler(api_key,api_key_secret)
-auth.set_access_token(access_token,access_token_secret)
+# set access to user's access key and access secret
+auth.set_access_token(access_token, access_token_secret)
 
+# calling the api
 api = tweepy.API(auth)
 
 my_query = '#cdm OR #coupedumonde'
@@ -20,6 +22,6 @@ date_to = "202212200000"
 numTweets = 10
 
 # premium search
-tweets= api.search_full_archive(label='eseo', query=my_query, fromDate=date_since, toDate=date_to, maxResults=numTweets)
+tweets= api.search_tweets(q=my_query, fromDate=date_since, toDate=date_to, maxResults=numTweets)
 
 print(tweets)
